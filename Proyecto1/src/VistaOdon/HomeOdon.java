@@ -53,8 +53,6 @@ public class HomeOdon extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         paneCOnfig = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         panelHome = new javax.swing.JPanel();
         rSCalendar2 = new rojeru_san.rsdate.RSCalendar();
         jPanel2 = new javax.swing.JPanel();
@@ -163,24 +161,24 @@ public class HomeOdon extends javax.swing.JPanel {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(286, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(44, 44, 44))
+                        .addGap(272, 272, 272)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addGap(82, 82, 82)
                 .addComponent(jLabel2)
-                .addGap(47, 47, 47)
+                .addGap(55, 55, 55)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panePerfilLayout = new javax.swing.GroupLayout(panePerfil);
@@ -198,34 +196,15 @@ public class HomeOdon extends javax.swing.JPanel {
 
         paneCOnfig.setName("paneCOnfig"); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Elephant", 0, 48)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel4.setText("EN DESARROLLO");
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/unnamed.gif"))); // NOI18N
-
         javax.swing.GroupLayout paneCOnfigLayout = new javax.swing.GroupLayout(paneCOnfig);
         paneCOnfig.setLayout(paneCOnfigLayout);
         paneCOnfigLayout.setHorizontalGroup(
             paneCOnfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneCOnfigLayout.createSequentialGroup()
-                .addContainerGap(286, Short.MAX_VALUE)
-                .addGroup(paneCOnfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(paneCOnfigLayout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(44, 44, 44))
+            .addGap(0, 844, Short.MAX_VALUE)
         );
         paneCOnfigLayout.setVerticalGroup(
             paneCOnfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneCOnfigLayout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(jLabel4)
-                .addGap(47, 47, 47)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+            .addGap(0, 438, Short.MAX_VALUE)
         );
 
         panel.add(paneCOnfig, "card5");
@@ -286,6 +265,8 @@ public class HomeOdon extends javax.swing.JPanel {
         );
 
         panel.add(panelHome, "card2");
+
+        panelPaci.setName("panelPaci"); // NOI18N
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -447,6 +428,7 @@ public class HomeOdon extends javax.swing.JPanel {
         this.boton_pacientes.setSelected(true);
         this.boton_perfil.setSelected(false);
         this.boton_config.setSelected(false);
+        actualizar("Cliente", tablePaci);
         panel.setPanelSlider(1, panelPaci, RSPanelsSlider.DIRECT.LEFT);
 
     }//GEN-LAST:event_boton_pacientesActionPerformed
@@ -466,7 +448,7 @@ public class HomeOdon extends javax.swing.JPanel {
         this.boton_perfil.setSelected(false);
         this.boton_config.setSelected(true);
 
-        panel.setPanelSlider(1, paneCOnfig, RSPanelsSlider.DIRECT.LEFT);
+        panel.setPanelSlider(1, panePerfil, RSPanelsSlider.DIRECT.LEFT);
     }//GEN-LAST:event_boton_configActionPerformed
 
     private void rSButtonMaterialIconUno7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMaterialIconUno7ActionPerformed
@@ -514,8 +496,6 @@ public class HomeOdon extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;

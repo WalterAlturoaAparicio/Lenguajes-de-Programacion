@@ -386,7 +386,7 @@ public class HomePaciente extends javax.swing.JPanel {
         this.boton_pacientes.setSelected(true);
         this.boton_perfil.setSelected(false);
         this.boton_config.setSelected(false);
-        panel.setPanelSlider(1, panePerfil, RSPanelsSlider.DIRECT.LEFT);
+        panel.setPanelSlider(1, paneCita, RSPanelsSlider.DIRECT.LEFT);
 
     }//GEN-LAST:event_boton_pacientesActionPerformed
 
@@ -405,7 +405,7 @@ public class HomePaciente extends javax.swing.JPanel {
         this.boton_perfil.setSelected(false);
         this.boton_config.setSelected(true);
 
-        panel.setPanelSlider(1, paneCita, RSPanelsSlider.DIRECT.LEFT);
+        panel.setPanelSlider(1, paneConfig, RSPanelsSlider.DIRECT.LEFT);
     }//GEN-LAST:event_boton_configActionPerformed
 
 
