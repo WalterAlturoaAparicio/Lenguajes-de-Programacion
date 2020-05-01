@@ -290,7 +290,11 @@ public class CrearUsuario extends javax.swing.JPanel {
         } else if (!pass.equals(repeatPass) ) {
             System.out.println("contraseña errada");
         } else {
-            logica.crearUsuario(nombre, apellido, cedula, correo, numeroContacto, apellid2, pass, usuario, direccion, tipoUsuario);            
+            try {            
+                logica.crearUsuario(nombre, apellido, cedula, correo, numeroContacto, apellid2, pass, usuario, direccion, tipoUsuario);
+            } catch (SQLException ex) {
+                Logger.getLogger(CrearUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
         this.txt_nombres.setText("Nombres");
