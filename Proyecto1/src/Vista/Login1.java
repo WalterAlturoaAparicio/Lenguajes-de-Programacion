@@ -154,11 +154,7 @@ public class Login1 extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }
-    
-   
-    
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
