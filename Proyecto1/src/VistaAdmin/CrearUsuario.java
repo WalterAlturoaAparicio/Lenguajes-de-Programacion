@@ -297,16 +297,18 @@ public class CrearUsuario extends javax.swing.JPanel {
             }
         }
         
-        this.txt_nombres.setText("Nombres");
-        this.txt_cedula.setText("Cédula");
-        this.txt_contraseña.setText("Contraseña");
-        this.txt_numeroContacto.setText("Numero de contacto");
-        this.txt_correo.setText("Correo electronico (personal o empresarial)");
-        this.txt_direccion.setText("Dirección domicilio");
-        this.txt_primerApellido.setText("Primer Apellido");
-        this.txt_segundoApellido.setText("Segundo Apellido");
-        this.txt_usuario.setText("Usuario");
-        this.txt_repetirContraseña.setText("contraseña");
+        this.txt_nombres.setText("");
+        this.txt_cedula.setText("");
+        this.txt_contraseña.setText("");
+        this.txt_numeroContacto.setText("");
+        this.txt_correo.setText("");
+        this.txt_direccion.setText("");
+        this.txt_primerApellido.setText("");
+        this.txt_segundoApellido.setText("");
+        this.txt_usuario.setText("");
+        this.txt_repetirContraseña.setText("");
+        holders();
+        
     }//GEN-LAST:event_crearActionPerformed
 
     private void txt_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_correoActionPerformed

@@ -7,6 +7,7 @@ package VistaOdon;
 
 import Controlador.LogicaUsuario;
 import Vista.Login1;
+import com.placeholder.PlaceHolder;
 
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -30,6 +31,7 @@ public class HomeOdon extends javax.swing.JPanel {
     private Login1 login;
     public HomeOdon(Login1 login) {
         initComponents();
+        holders();
         this.login=login;
     }
 
@@ -68,12 +70,11 @@ public class HomeOdon extends javax.swing.JPanel {
         paneCitas = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        idCita = new javax.swing.JTextField();
+        IdOdontologo = new javax.swing.JTextField();
         IdPaciente = new javax.swing.JTextField();
         Valor = new javax.swing.JTextField();
         FechaCita = new javax.swing.JTextField();
         fechaAsignacion = new javax.swing.JTextField();
-        IdOdontologo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         observacion = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -199,7 +200,7 @@ public class HomeOdon extends javax.swing.JPanel {
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHomeLayout.createSequentialGroup()
-                .addContainerGap(142, Short.MAX_VALUE)
+                .addContainerGap(203, Short.MAX_VALUE)
                 .addComponent(rSCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(102, 102, 102))
         );
@@ -308,7 +309,7 @@ public class HomeOdon extends javax.swing.JPanel {
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addComponent(persona1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 325, Short.MAX_VALUE)
                 .addComponent(rSButtonMaterialIconUno7, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(modPaci, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -418,54 +419,48 @@ public class HomeOdon extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(paneCitasLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
+                .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(IdPaciente)
+                    .addComponent(Valor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                    .addComponent(IdOdontologo))
+                .addGap(51, 51, 51)
                 .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fechaAsignacion, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FechaCita, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113))
+            .addGroup(paneCitasLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneCitasLayout.createSequentialGroup()
+                        .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))
                     .addGroup(paneCitasLayout.createSequentialGroup()
-                        .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(IdPaciente)
-                            .addComponent(idCita, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Valor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                            .addComponent(IdOdontologo))
-                        .addGap(51, 51, 51)
                         .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fechaAsignacion, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FechaCita, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34))
-                    .addGroup(paneCitasLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
-                        .addGap(18, 18, 18)
-                        .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 54, 54))))
+                            .addComponent(editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
         paneCitasLayout.setVerticalGroup(
             paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneCitasLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(paneCitasLayout.createSequentialGroup()
-                        .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(paneCitasLayout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(FechaCita, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneCitasLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(idCita, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(FechaCita, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(IdOdontologo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(fechaAsignacion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(IdOdontologo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15)
-                        .addComponent(IdPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(IdPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addComponent(Valor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(paneCitasLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(paneCitasLayout.createSequentialGroup()
                         .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -539,7 +534,6 @@ public class HomeOdon extends javax.swing.JPanel {
 
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
         // TODO add your handling code here:
-        idCIta= idCita.getText();
         idOdontologo= IdOdontologo.getText();
         idPaciente= IdPaciente.getText();
         valor= Valor.getText();
@@ -547,12 +541,19 @@ public class HomeOdon extends javax.swing.JPanel {
         fechaCita= FechaCita.getText();
         descripcion = observacion.getText();
         
-        if (idCIta.equals("") || idOdontologo.equals("") || idPaciente.equals("") || valor.equals("") || fechaActual.equals("") || fechaCita.equals("")) {
+        if (idOdontologo.equals("") || idPaciente.equals("") || valor.equals("") || fechaActual.equals("") || fechaCita.equals("")) {
             JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
         }else{
-            logica.crearCita(idCIta, idOdontologo, idPaciente, valor, fechaCita, fechaActual, descripcion);
+            logica.crearCita(idOdontologo, idPaciente, valor, fechaCita, fechaActual, descripcion);
             actualizarCita(tablaCitas);
         }
+        IdOdontologo.setText("");
+        IdPaciente.setText("");
+        Valor.setText("");
+        fechaAsignacion.setText("");
+        FechaCita.setText("");
+        observacion.setText("");
+        holders();
         
     }//GEN-LAST:event_agregarActionPerformed
 
@@ -587,9 +588,8 @@ public class HomeOdon extends javax.swing.JPanel {
 
     private void tablaCitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaCitasMouseClicked
         // TODO add your handling code here:
-        
         filaSelected = tablaCitas.rowAtPoint(evt.getPoint());
-        idCita.setText(tablaCitas.getValueAt(filaSelected,0).toString());
+        
         IdOdontologo.setText(tablaCitas.getValueAt(filaSelected,1).toString());
         IdPaciente.setText(tablaCitas.getValueAt(filaSelected,2).toString());
         Valor.setText(tablaCitas.getValueAt(filaSelected,3).toString());
@@ -599,15 +599,14 @@ public class HomeOdon extends javax.swing.JPanel {
     }//GEN-LAST:event_tablaCitasMouseClicked
     
     public void modificarCita(RSTableMetro1 tabla){
-        
-        
+
         try {
-            logica.actualizarCita(tabla.getValueAt(filaSelected, 0).toString(),
-                tabla.getValueAt(filaSelected, 1).toString(),
-                tabla.getValueAt(filaSelected, 2).toString(),
-                tabla.getValueAt(filaSelected, 3).toString(),
-                tabla.getValueAt(filaSelected, 4).toString(),
-                tabla.getValueAt(filaSelected, 5).toString());
+            logica.actualizarCita(
+            tabla.getValueAt(filaSelected,0).toString(),
+            tabla.getValueAt(filaSelected, 3).toString(),
+            tabla.getValueAt(filaSelected, 4).toString(),
+            tabla.getValueAt(filaSelected, 5).toString(),
+            tabla.getValueAt(filaSelected, 6).toString());
         } catch (SQLException ex) {
             Logger.getLogger(HomeOdon.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -648,6 +647,15 @@ public class HomeOdon extends javax.swing.JPanel {
         }
         
     }
+    public void holders() {
+        PlaceHolder holder;
+        holder = new PlaceHolder(IdOdontologo, "Odontologo");
+        holder = new PlaceHolder(IdPaciente, "Paciente");
+        holder = new PlaceHolder(Valor, "Costo");
+        holder = new PlaceHolder(FechaCita, "Fecha de la Cita");
+        holder = new PlaceHolder(fechaAsignacion, "Fecha de asignacion");
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField FechaCita;
@@ -663,7 +671,6 @@ public class HomeOdon extends javax.swing.JPanel {
     private RSMaterialComponent.RSButtonMaterialUno editar;
     private RSMaterialComponent.RSButtonMaterialUno eliminar;
     private javax.swing.JTextField fechaAsignacion;
-    private javax.swing.JTextField idCita;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
