@@ -11,6 +11,7 @@ import Vista.Login1;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import rojerusan.RSPanelsSlider;
 import rojerusan.RSTableMetro1;
 
@@ -24,6 +25,7 @@ public class HomeOdon extends javax.swing.JPanel {
      * Creates new form HomeOdon
      */
     int filaSelected;
+    String idCIta, idOdontologo, idPaciente, valor,fechaActual,fechaCita,descripcion;
     LogicaUsuario logica = new LogicaUsuario();
     private Login1 login;
     public HomeOdon(Login1 login) {
@@ -46,13 +48,8 @@ public class HomeOdon extends javax.swing.JPanel {
         boton_pacientes = new RSMaterialComponent.RSButtonMaterialIconUno();
         boton_perfil = new RSMaterialComponent.RSButtonMaterialIconUno();
         jSeparator1 = new javax.swing.JSeparator();
-        boton_config = new RSMaterialComponent.RSButtonMaterialIconUno();
+        boton_citas = new RSMaterialComponent.RSButtonMaterialIconUno();
         panel = new rojerusan.RSPanelsSlider();
-        panePerfil = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        paneCOnfig = new javax.swing.JPanel();
         panelHome = new javax.swing.JPanel();
         rSCalendar2 = new rojeru_san.rsdate.RSCalendar();
         jPanel2 = new javax.swing.JPanel();
@@ -68,6 +65,22 @@ public class HomeOdon extends javax.swing.JPanel {
         jScrollPane5 = new javax.swing.JScrollPane();
         tablePaci = new rojerusan.RSTableMetro1();
         persona1 = new necesario.TextField();
+        paneCitas = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        idCita = new javax.swing.JTextField();
+        IdPaciente = new javax.swing.JTextField();
+        Valor = new javax.swing.JTextField();
+        FechaCita = new javax.swing.JTextField();
+        fechaAsignacion = new javax.swing.JTextField();
+        IdOdontologo = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        observacion = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaCitas = new rojerusan.RSTableMetro1();
+        eliminar = new RSMaterialComponent.RSButtonMaterialUno();
+        agregar = new RSMaterialComponent.RSButtonMaterialUno();
+        editar = new RSMaterialComponent.RSButtonMaterialUno();
 
         boton_salir.setBackground(new java.awt.Color(0, 37, 64));
         boton_salir.setText("Salir");
@@ -108,12 +121,12 @@ public class HomeOdon extends javax.swing.JPanel {
             }
         });
 
-        boton_config.setBackground(new java.awt.Color(0, 37, 64));
-        boton_config.setText("Configuración");
-        boton_config.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.PERSON);
-        boton_config.addActionListener(new java.awt.event.ActionListener() {
+        boton_citas.setBackground(new java.awt.Color(0, 37, 64));
+        boton_citas.setText("Citas");
+        boton_citas.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.PERSON);
+        boton_citas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_configActionPerformed(evt);
+                boton_citasActionPerformed(evt);
             }
         });
 
@@ -126,7 +139,7 @@ public class HomeOdon extends javax.swing.JPanel {
             .addComponent(boton_perfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(boton_salir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(jSeparator1)
-            .addComponent(boton_config, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(boton_citas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         paneleLayout.setVerticalGroup(
             paneleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,76 +151,13 @@ public class HomeOdon extends javax.swing.JPanel {
                 .addGap(4, 4, 4)
                 .addComponent(boton_pacientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(boton_config, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(boton_citas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(boton_salir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        panePerfil.setFocusCycleRoot(true);
-        panePerfil.setName("panePerfil"); // NOI18N
-
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel2.setFont(new java.awt.Font("Elephant", 0, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel2.setText("EN DESARROLLO");
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/unnamed.gif"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(272, 272, 272)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(267, Short.MAX_VALUE))
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jLabel2)
-                .addGap(55, 55, 55)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(101, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout panePerfilLayout = new javax.swing.GroupLayout(panePerfil);
-        panePerfil.setLayout(panePerfilLayout);
-        panePerfilLayout.setHorizontalGroup(
-            panePerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        panePerfilLayout.setVerticalGroup(
-            panePerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        panel.add(panePerfil, "card4");
-
-        paneCOnfig.setName("paneCOnfig"); // NOI18N
-
-        javax.swing.GroupLayout paneCOnfigLayout = new javax.swing.GroupLayout(paneCOnfig);
-        paneCOnfig.setLayout(paneCOnfigLayout);
-        paneCOnfigLayout.setHorizontalGroup(
-            paneCOnfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 844, Short.MAX_VALUE)
-        );
-        paneCOnfigLayout.setVerticalGroup(
-            paneCOnfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 438, Short.MAX_VALUE)
-        );
-
-        panel.add(paneCOnfig, "card5");
 
         panelHome.setBackground(new java.awt.Color(255, 255, 255));
         panelHome.setName("panelHome"); // NOI18N
@@ -229,7 +179,7 @@ public class HomeOdon extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -247,13 +197,11 @@ public class HomeOdon extends javax.swing.JPanel {
         panelHome.setLayout(panelHomeLayout);
         panelHomeLayout.setHorizontalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelHomeLayout.createSequentialGroup()
                 .addGap(72, 72, 72)
-                .addComponent(rSCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelHomeLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(rSCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(172, Short.MAX_VALUE))
         );
         panelHomeLayout.setVerticalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,7 +325,7 @@ public class HomeOdon extends javax.swing.JPanel {
                     .addComponent(modPaci, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(persona1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelPaciLayout = new javax.swing.GroupLayout(panelPaci);
@@ -392,6 +340,144 @@ public class HomeOdon extends javax.swing.JPanel {
         );
 
         panel.add(panelPaci, "card5");
+
+        paneCitas.setBackground(new java.awt.Color(255, 255, 255));
+        paneCitas.setName("paneCitas"); // NOI18N
+
+        jPanel1.setBackground(new java.awt.Color(0, 112, 192));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Citas");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
+        observacion.setColumns(20);
+        observacion.setRows(5);
+        jScrollPane1.setViewportView(observacion);
+
+        tablaCitas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tablaCitas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaCitasMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tablaCitas);
+
+        eliminar.setText("Eliminar");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
+
+        agregar.setText("Agregar");
+        agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarActionPerformed(evt);
+            }
+        });
+
+        editar.setText("Editar");
+        editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout paneCitasLayout = new javax.swing.GroupLayout(paneCitas);
+        paneCitas.setLayout(paneCitasLayout);
+        paneCitasLayout.setHorizontalGroup(
+            paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(paneCitasLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(paneCitasLayout.createSequentialGroup()
+                        .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(IdPaciente)
+                            .addComponent(idCita, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Valor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                            .addComponent(IdOdontologo))
+                        .addGap(51, 51, 51)
+                        .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fechaAsignacion, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FechaCita, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))
+                    .addGroup(paneCitasLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2)
+                        .addGap(18, 18, 18)
+                        .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(54, 54, 54))))
+        );
+        paneCitasLayout.setVerticalGroup(
+            paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneCitasLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(paneCitasLayout.createSequentialGroup()
+                        .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(paneCitasLayout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(FechaCita, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneCitasLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(idCita, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fechaAsignacion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(IdOdontologo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
+                        .addComponent(IdPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Valor, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paneCitasLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(31, 31, 31)
+                .addGroup(paneCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(paneCitasLayout.createSequentialGroup()
+                        .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        panel.add(paneCitas, "card5");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -417,7 +503,7 @@ public class HomeOdon extends javax.swing.JPanel {
         this.boton_home.setSelected(true);
         this.boton_pacientes.setSelected(false);
         this.boton_perfil.setSelected(false);
-        this.boton_config.setSelected(false);
+        this.boton_citas.setSelected(false);
 
         panel.setPanelSlider(1, panelHome, RSPanelsSlider.DIRECT.LEFT);
     }//GEN-LAST:event_boton_homeActionPerformed
@@ -427,7 +513,7 @@ public class HomeOdon extends javax.swing.JPanel {
         this.boton_home.setSelected(false);
         this.boton_pacientes.setSelected(true);
         this.boton_perfil.setSelected(false);
-        this.boton_config.setSelected(false);
+        this.boton_citas.setSelected(false);
         actualizar("Cliente", tablePaci);
         panel.setPanelSlider(1, panelPaci, RSPanelsSlider.DIRECT.LEFT);
 
@@ -437,38 +523,114 @@ public class HomeOdon extends javax.swing.JPanel {
         this.boton_home.setSelected(false);
         this.boton_pacientes.setSelected(false);
         this.boton_perfil.setSelected(true);
-        this.boton_config.setSelected(false);
+        this.boton_citas.setSelected(false);
 
-        panel.setPanelSlider(1, panePerfil, RSPanelsSlider.DIRECT.LEFT);
+        panel.setPanelSlider(1, panelHome, RSPanelsSlider.DIRECT.LEFT);
     }//GEN-LAST:event_boton_perfilActionPerformed
 
-    private void boton_configActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_configActionPerformed
+    private void boton_citasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_citasActionPerformed
         this.boton_home.setSelected(false);
         this.boton_pacientes.setSelected(false);
         this.boton_perfil.setSelected(false);
-        this.boton_config.setSelected(true);
+        this.boton_citas.setSelected(true);
+        actualizarCita(tablaCitas);
+        panel.setPanelSlider(1, paneCitas, RSPanelsSlider.DIRECT.LEFT);
+    }//GEN-LAST:event_boton_citasActionPerformed
 
-        panel.setPanelSlider(1, panePerfil, RSPanelsSlider.DIRECT.LEFT);
-    }//GEN-LAST:event_boton_configActionPerformed
+    private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
+        // TODO add your handling code here:
+        idCIta= idCita.getText();
+        idOdontologo= IdOdontologo.getText();
+        idPaciente= IdPaciente.getText();
+        valor= Valor.getText();
+        fechaActual= fechaAsignacion.getText();
+        fechaCita= FechaCita.getText();
+        descripcion = observacion.getText();
+        
+        if (idCIta.equals("") || idOdontologo.equals("") || idPaciente.equals("") || valor.equals("") || fechaActual.equals("") || fechaCita.equals("")) {
+            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+        }else{
+            logica.crearCita(idCIta, idOdontologo, idPaciente, valor, fechaCita, fechaActual, descripcion);
+            actualizarCita(tablaCitas);
+        }
+        
+    }//GEN-LAST:event_agregarActionPerformed
 
-    private void rSButtonMaterialIconUno7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMaterialIconUno7ActionPerformed
-        new Login1(login).setVisible(true);
-    }//GEN-LAST:event_rSButtonMaterialIconUno7ActionPerformed
+    private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
+        
+        modificarCita(tablaCitas);
+        actualizarCita(tablaCitas);
 
-    private void modPaciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modPaciActionPerformed
-        if(!persona1.getText().equals(""))
-            modificar(tablePaci);
-        actualizar("Cliente",tablePaci);
-    }//GEN-LAST:event_modPaciActionPerformed
+    }//GEN-LAST:event_editarActionPerformed
 
     private void tablePaciMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePaciMouseClicked
         filaSelected = tablePaci.rowAtPoint(evt.getPoint());
         persona1.setText(tablePaci.getValueAt(filaSelected, 5).toString());
     }//GEN-LAST:event_tablePaciMouseClicked
+
+    private void modPaciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modPaciActionPerformed
+        if(!persona1.getText().equals(""))
+        modificar(tablePaci);
+        actualizar("Cliente",tablePaci);
+    }//GEN-LAST:event_modPaciActionPerformed
+
+    private void rSButtonMaterialIconUno7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMaterialIconUno7ActionPerformed
+        new Login1(login).setVisible(true);
+    }//GEN-LAST:event_rSButtonMaterialIconUno7ActionPerformed
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+
+        borrarCita(tablaCitas.getValueAt(filaSelected, 0).toString());
+        actualizarCita(tablaCitas);
+        
+    }//GEN-LAST:event_eliminarActionPerformed
+
+    private void tablaCitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaCitasMouseClicked
+        // TODO add your handling code here:
+        
+        filaSelected = tablaCitas.rowAtPoint(evt.getPoint());
+        idCita.setText(tablaCitas.getValueAt(filaSelected,0).toString());
+        IdOdontologo.setText(tablaCitas.getValueAt(filaSelected,1).toString());
+        IdPaciente.setText(tablaCitas.getValueAt(filaSelected,2).toString());
+        Valor.setText(tablaCitas.getValueAt(filaSelected,3).toString());
+        FechaCita.setText(tablaCitas.getValueAt(filaSelected,4).toString());
+        fechaAsignacion.setText(tablaCitas.getValueAt(filaSelected,5).toString());
+        observacion.setText(tablaCitas.getValueAt(filaSelected,6).toString());
+    }//GEN-LAST:event_tablaCitasMouseClicked
+    
+    public void modificarCita(RSTableMetro1 tabla){
+        
+        
+        try {
+            logica.actualizarCita(tabla.getValueAt(filaSelected, 0).toString(),
+                tabla.getValueAt(filaSelected, 1).toString(),
+                tabla.getValueAt(filaSelected, 2).toString(),
+                tabla.getValueAt(filaSelected, 3).toString(),
+                tabla.getValueAt(filaSelected, 4).toString(),
+                tabla.getValueAt(filaSelected, 5).toString());
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeOdon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public void borrarCita(String id){
+        
+        logica.eliminarCita(id);
+    }
     
     public void actualizar(String tipo, RSTableMetro1 tabla){
         logica.consultaTabla(tabla,tipo);
     }
+    
+    public void actualizarCita(RSTableMetro1 tabla){
+        try {
+            logica.consultaTablaCitas(tabla);
+        } catch (SQLException ex) {
+            Logger.getLogger(HomeOdon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void modificar(RSTableMetro1 tabla){
 
         try {
@@ -488,24 +650,34 @@ public class HomeOdon extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private RSMaterialComponent.RSButtonMaterialIconUno boton_config;
+    private javax.swing.JTextField FechaCita;
+    private javax.swing.JTextField IdOdontologo;
+    private javax.swing.JTextField IdPaciente;
+    private javax.swing.JTextField Valor;
+    private RSMaterialComponent.RSButtonMaterialUno agregar;
+    private RSMaterialComponent.RSButtonMaterialIconUno boton_citas;
     private RSMaterialComponent.RSButtonMaterialIconUno boton_home;
     private RSMaterialComponent.RSButtonMaterialIconUno boton_pacientes;
     private RSMaterialComponent.RSButtonMaterialIconUno boton_perfil;
     private RSMaterialComponent.RSButtonMaterialIconUno boton_salir;
+    private RSMaterialComponent.RSButtonMaterialUno editar;
+    private RSMaterialComponent.RSButtonMaterialUno eliminar;
+    private javax.swing.JTextField fechaAsignacion;
+    private javax.swing.JTextField idCita;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private RSMaterialComponent.RSButtonMaterialIconUno modPaci;
-    private javax.swing.JPanel paneCOnfig;
-    private javax.swing.JPanel panePerfil;
+    private javax.swing.JTextArea observacion;
+    private javax.swing.JPanel paneCitas;
     private rojerusan.RSPanelsSlider panel;
     private javax.swing.JPanel panelHome;
     private javax.swing.JPanel panelPaci;
@@ -515,6 +687,7 @@ public class HomeOdon extends javax.swing.JPanel {
     private rojeru_san.rsdate.RSCalendar rSCalendar2;
     private rojeru_san.rsdate.RSLabelHora rSLabelHora1;
     private rojeru_san.rsdate.RSLabelHora rSLabelHora4;
+    private rojerusan.RSTableMetro1 tablaCitas;
     private rojerusan.RSTableMetro1 tablePaci;
     // End of variables declaration//GEN-END:variables
 }
