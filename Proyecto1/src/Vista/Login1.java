@@ -48,7 +48,6 @@ public class Login1 extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -97,7 +96,7 @@ public class Login1 extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -152,6 +151,8 @@ public class Login1 extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }
+    
+   
     
     
     

@@ -13,6 +13,8 @@ import com.mysql.jdbc.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -31,6 +33,7 @@ public class LogicaUsuario {
     private Usuario usuario;
     private DefaultTableModel modelo;
     String[] titulos = {"Nombre", "Apellido(s)", "Dirección", "Correo", "Contacto", "usuario", "Password", "Cedula", "ID"};
+    String[] titulos2= {"IdCita", "IdOdontologo","IdPaciente","Valor","FechaGenerada","FechaCita","Descripcion"};
     String[] fila = new String[9];
 
     public ArrayList<Usuario> obtenerListaUsuarios() {
@@ -94,6 +97,33 @@ public class LogicaUsuario {
             conexion.close();
         }
     }
+    
+    public void crearCita(String idCita, String idOdontologo, String idCliente, String valor, String fechaCita, String fechaActual, String descripcion){
+        
+        try{
+            conexion = Conexion.getConnection();
+            stmt = (Statement) conexion.createStatement();
+            if (conexion != null) {
+                stmt.executeUpdate("INSERT INTO citas(IdCliente,IdOdontologo,Precio,FechaGenerada,FechaCita,Descripcion) values(" + "'"  + idOdontologo + "','"
+                        + idCliente + "','" + valor + "','" + fechaActual + "','" + fechaCita + "','"+ descripcion + "')");
+                System.out.println("Registro exitoso");
+            } else {
+                System.out.println("conexion fallida");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LogicaUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            sentencias=null;
+            try {
+                conexion.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LogicaUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    
 
     public void consultaTabla(JTable tabla, String tipoUsuario) {
         try {
@@ -128,6 +158,46 @@ public class LogicaUsuario {
         }
 
     }
+    
+    
+    public void consultaTablaCitas(JTable tabla) throws SQLException {
+        try {
+            conexion = Conexion.getConnection();
+            stmt = (Statement) conexion.createStatement();
+            if (conexion != null) //System.out.println("conexion exitosa");
+            {
+                modelo = new DefaultTableModel(null, titulos2);
+            }
+            ResultSet rs = null;
+            try {
+                rs = stmt.executeQuery("select * from citas");
+            } catch (SQLException ex) {
+                Logger.getLogger(LogicaUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            while (rs.next()) {
+                
+                    fila[0] = rs.getString("Id");
+                    fila[1] = rs.getString("IdCliente");
+                    fila[2] = rs.getString("IdOdontologo");
+                    fila[3] = rs.getString("Precio");
+                    fila[4] = rs.getString("FechaGenerada");
+                    fila[5] = rs.getString("FechaCita");
+                    fila[6] = rs.getString("Descripcion");
+                    
+
+                    modelo.addRow(fila);
+
+                
+            }
+            tabla.setModel(modelo);
+
+        } catch (Exception e) {
+            System.out.println("Error al extraer los datos de las tabals" + e.getMessage());
+        }
+
+    }
+    
 
     public void actualizar(String nombre, String apellido, String direccion, String correo, String numeroContacto, String user, String pass, String cedula, String id) throws SQLException {
         try {
@@ -157,6 +227,35 @@ public class LogicaUsuario {
         }
 
     }
+    
+    public void actualizarCita(String idCliente , String idOdontologo, String valor, String fechaActual , String fechaCita , String descripcion) throws SQLException {
+        try {
+            conexion = Conexion.getConnection();
+            sentencias = conexion.prepareStatement("UPDATE citas SET IdCliente= "+"'"+idCliente+"', "
+                + "IdOdontologo= "+"'"+idOdontologo+"', "
+                + "Precio= "+"'"+valor+"', "
+                + "FechaGenerada= "+"'"+fechaActual+"', "
+                + "FechaCita= "+"'"+fechaCita+"', "
+                + "Descripcion= "+"'"+descripcion);
+            if (conexion != null) 
+                System.out.println("conexion exitosa");
+            
+            sentencias.executeUpdate();
+            System.out.println("exito");
+    
+
+        } catch (Exception e) {
+            System.out.println("Error al extraer los datos de las tablas" + e.getMessage());
+        }
+        finally{
+            sentencias=null;
+            conexion.close();
+        }
+
+    }
+    
+    
+    
     public void eliminar(String user) {
         try {
             conexion = Conexion.getConnection();
@@ -168,6 +267,18 @@ public class LogicaUsuario {
             System.out.println("Error "+e.getMessage());
         }
         
+    }
+    
+    public void eliminarCita(String idCita){
+        try {
+            conexion = Conexion.getConnection();
+            sentencias = conexion.prepareStatement("DELETE FROM citas WHERE Id= "+idCita);
+
+            sentencias.executeUpdate();
+            System.out.println("Exito");
+        } catch (Exception e) {
+            System.out.println("Error "+e.getMessage());
+        }
     }
 
 }
