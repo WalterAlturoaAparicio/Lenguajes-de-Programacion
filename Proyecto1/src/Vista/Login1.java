@@ -53,6 +53,7 @@ public class Login1 extends javax.swing.JFrame {
         setResizable(false);
         pack();
         setLocationRelativeTo(null);
+        setIconImage(getIconImage());
     }
     
     /**
@@ -97,12 +98,7 @@ public class Login1 extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Login1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+        
         
 
         /* Create and display the form */

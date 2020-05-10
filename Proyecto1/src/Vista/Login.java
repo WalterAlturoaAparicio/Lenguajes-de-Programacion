@@ -157,13 +157,9 @@ public class Login extends javax.swing.JPanel {
             Usuario datos = logica.iniciaSesion(user, pass);
             
             if(datos != null){
-                
-                Thread.sleep(5000);
+                advertencia.setForeground(Color.white);
                 gestionCliente(datos.getTipoUsuario());
             }else{
-                
-                   
-                
                 advertencia.setText("¡Datos incorrectos, intentelo nuevamente!");
                 advertencia.setForeground(Color.red);
             }
