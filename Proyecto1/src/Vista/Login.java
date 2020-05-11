@@ -46,7 +46,7 @@ public class Login extends javax.swing.JPanel {
         rSPanelShadow1 = new rojeru_san.rspanel.RSPanelShadow();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        contraseña = new RSMaterialComponent.RSPasswordIconDos();
+        contrasena = new RSMaterialComponent.RSPasswordIconDos();
         usuario = new RSMaterialComponent.RSTextFieldIconDos();
         boton = new rojerusan.RSMaterialButtonRectangle();
         advertencia = new javax.swing.JLabel();
@@ -60,8 +60,8 @@ public class Login extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Inicio de Sesión");
 
-        contraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        contraseña.setPlaceholder("Contraseña");
+        contrasena.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        contrasena.setPlaceholder("Contraseña");
 
         usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         usuario.setPlaceholder("Usuario");
@@ -93,7 +93,7 @@ public class Login extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(advertencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -106,7 +106,7 @@ public class Login extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(advertencia)
                 .addGap(4, 4, 4)
@@ -138,7 +138,7 @@ public class Login extends javax.swing.JPanel {
 
     private void botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActionPerformed
         String user = usuario.getText();
-        String pass = contraseña.getText();
+        String pass = contrasena.getText();
         
         try {
             inicioSesion(user,pass);
@@ -190,7 +190,7 @@ public class Login extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel advertencia;
     private rojerusan.RSMaterialButtonRectangle boton;
-    private RSMaterialComponent.RSPasswordIconDos contraseña;
+    private RSMaterialComponent.RSPasswordIconDos contrasena;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private rojeru_san.rspanel.RSPanelGradiente rSPanelGradiente1;

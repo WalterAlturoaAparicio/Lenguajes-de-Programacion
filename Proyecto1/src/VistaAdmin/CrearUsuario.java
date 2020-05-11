@@ -63,8 +63,8 @@ public class CrearUsuario extends javax.swing.JPanel {
         txt_cedula = new javax.swing.JTextField();
         txt_numeroContacto = new javax.swing.JTextField();
         txt_direccion = new javax.swing.JTextField();
-        txt_contraseña = new javax.swing.JPasswordField();
-        txt_repetirContraseña = new javax.swing.JPasswordField();
+        txt_contrasena = new javax.swing.JPasswordField();
+        txt_repetirContrasena = new javax.swing.JPasswordField();
         obligatorio9 = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
         bx_tipo_usuario = new rojerusan.RSComboBox();
@@ -174,8 +174,8 @@ public class CrearUsuario extends javax.swing.JPanel {
         });
         rSPanelGradiente1.add(txt_numeroContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 162, 29));
         rSPanelGradiente1.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 360, 30));
-        rSPanelGradiente1.add(txt_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 360, 30));
-        rSPanelGradiente1.add(txt_repetirContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 360, 30));
+        rSPanelGradiente1.add(txt_contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 360, 30));
+        rSPanelGradiente1.add(txt_repetirContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 360, 30));
 
         obligatorio9.setForeground(new java.awt.Color(255, 0, 0));
         obligatorio9.setText(" *");
@@ -276,8 +276,8 @@ public class CrearUsuario extends javax.swing.JPanel {
         correo = txt_correo.getText();
         numeroContacto = txt_numeroContacto.getText();
         apellid2 = txt_segundoApellido.getText(); //hrsgsrh
-        pass = txt_contraseña.getText();
-        repeatPass=txt_repetirContraseña.getText();
+        pass = txt_contrasena.getText();
+        repeatPass=txt_repetirContrasena.getText();
         usuario = txt_usuario.getText();
         direccion = txt_direccion.getText();
         tipoUsuario = bx_tipo_usuario.getSelectedItem().toString();
@@ -299,14 +299,14 @@ public class CrearUsuario extends javax.swing.JPanel {
         
         this.txt_nombres.setText("");
         this.txt_cedula.setText("");
-        this.txt_contraseña.setText("");
+        this.txt_contrasena.setText("");
         this.txt_numeroContacto.setText("");
         this.txt_correo.setText("");
         this.txt_direccion.setText("");
         this.txt_primerApellido.setText("");
         this.txt_segundoApellido.setText("");
         this.txt_usuario.setText("");
-        this.txt_repetirContraseña.setText("");
+        this.txt_repetirContrasena.setText("");
         holders();
         
     }//GEN-LAST:event_crearActionPerformed
@@ -321,8 +321,8 @@ public class CrearUsuario extends javax.swing.JPanel {
         PlaceHolder holder;
         holder = new PlaceHolder(txt_nombres, "Nombres");
         holder = new PlaceHolder(txt_cedula, "Cédula");
-        holder = new PlaceHolder(txt_contraseña, "Contraseña");
-        holder = new PlaceHolder(txt_repetirContraseña, "Repita la Contraseña");
+        holder = new PlaceHolder(txt_contrasena, "Contraseña");
+        holder = new PlaceHolder(txt_repetirContrasena, "Repita la Contraseña");
         holder = new PlaceHolder(txt_primerApellido, "Primer Apellido");
         holder = new PlaceHolder(txt_segundoApellido, "Segundo Apellido");
         holder = new PlaceHolder(txt_correo, "Correo electronico (personal o empresarial)");
@@ -349,13 +349,13 @@ public class CrearUsuario extends javax.swing.JPanel {
     private rojeru_san.rspanel.RSPanelGradiente rSPanelGradiente1;
     private rojerusan.RSMaterialButtonRectangle salir;
     private javax.swing.JTextField txt_cedula;
-    private javax.swing.JPasswordField txt_contraseña;
+    private javax.swing.JPasswordField txt_contrasena;
     private javax.swing.JTextField txt_correo;
     private javax.swing.JTextField txt_direccion;
     private javax.swing.JTextField txt_nombres;
     private javax.swing.JTextField txt_numeroContacto;
     private javax.swing.JTextField txt_primerApellido;
-    private javax.swing.JPasswordField txt_repetirContraseña;
+    private javax.swing.JPasswordField txt_repetirContrasena;
     private javax.swing.JTextField txt_segundoApellido;
     private javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables
