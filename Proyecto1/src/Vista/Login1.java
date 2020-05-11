@@ -12,6 +12,8 @@ import VistaAdmin.HomeAdmin;
 import VistaOdon.HomeOdon;
 import VistaPaciente.HomePaciente;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import rojeru_san.complementos.RSUtilities;
@@ -31,12 +33,17 @@ public class Login1 extends javax.swing.JFrame {
     
     public Login1() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setName("pricipalJFrame");
+        setName("pricipal");
         setTitle("Proyecto");
         setResizable(false);
         pack(); 
         setLocationRelativeTo(null);//mirat
+        setIconImage(getIconImage());
         iniciar(); 
+    }
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/logoFrui.jpg"));
+        return retValue;
     }
     public Login1(Login1 login){
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -46,6 +53,7 @@ public class Login1 extends javax.swing.JFrame {
         setResizable(false);
         pack();
         setLocationRelativeTo(null);
+        setIconImage(getIconImage());
     }
     
     /**
@@ -90,12 +98,7 @@ public class Login1 extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Login1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+        
         
 
         /* Create and display the form */
@@ -151,11 +154,7 @@ public class Login1 extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }
-    
-   
-    
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 

@@ -8,6 +8,8 @@ package Vista;
 import Controlador.LogicaUsuario;
 import Modelo.Usuario;
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 import rojeru_san.complementos.RSUtilities;
@@ -25,6 +27,7 @@ public class Login extends javax.swing.JPanel {
     LogicaUsuario logica = new LogicaUsuario();
     public Login(Login1 login) {
         initComponents();
+
         this.login=login;
         RSUtilities.setCenterWindow(login);
         RSUtilities.setOpaqueWindow(login, false);
@@ -136,17 +139,25 @@ public class Login extends javax.swing.JPanel {
     private void botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActionPerformed
         String user = usuario.getText();
         String pass = contraseña.getText();
-        inicioSesion(user,pass);
+        
+        try {
+            inicioSesion(user,pass);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_botonActionPerformed
-    private void inicioSesion(String user, String pass) {
+    private void inicioSesion(String user, String pass) throws InterruptedException {
         
         if(user.isEmpty() || pass.isEmpty()){
             advertencia.setText("          ¡No puede dejar campos vacios!          ");
             advertencia.setForeground(Color.red);
         }else{
+            
             Usuario datos = logica.iniciaSesion(user, pass);
+            
             if(datos != null){
+                advertencia.setForeground(Color.white);
                 gestionCliente(datos.getTipoUsuario());
             }else{
                 advertencia.setText("¡Datos incorrectos, intentelo nuevamente!");
@@ -173,6 +184,7 @@ public class Login extends javax.swing.JPanel {
                 break;
         }
     }  
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Proyecto1">
+  <ClassDiagramComponents>
+    <Class name="LogicaUsuario" package="Controlador" visibility="public" xPosition="85.0" yPosition="1918.0">
+      <Fields>
+        <Field name="ListaUsuarios" type="ArrayList&lt;Usuario&gt;" visibility="package"/>
+        <Field name="conexion" type="Connection" visibility="private"/>
+        <Field name="sentencias" type="PreparedStatement" visibility="private"/>
+        <Field name="stmt" type="Statement" visibility="private"/>
+        <Field name="rs" type="ResultSet" visibility="private"/>
+        <Field name="usuario" type="Usuario" visibility="private"/>
+        <Field name="modelo" type="DefaultTableModel" visibility="private"/>
+        <Field name="titulos" type="String[]" visibility="package"/>
+        <Field name="titulos2" type="String[]" visibility="package"/>
+        <Field name="fila" type="String[]" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="obtenerListaUsuarios" returnType="ArrayList&lt;Usuario&gt;" visibility="public"/>
+        <Method name="iniciaSesion" returnType="Usuario" visibility="public">
+          <Argument type="String" name="user"/>
+          <Argument type="String" name="pass"/>
+        </Method>
+        <Method name="crearUsuario" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="String" name="cedula"/>
+          <Argument type="String" name="correo"/>
+          <Argument type="String" name="numeroContacto"/>
+          <Argument type="String" name="apellid2"/>
+          <Argument type="String" name="pass"/>
+          <Argument type="String" name="usuario"/>
+          <Argument type="String" name="direccion"/>
+          <Argument type="String" name="tipoUsuario"/>
+        </Method>
+        <Method name="crearCita" returnType="void" visibility="public">
+          <Argument type="String" name="idOdontologo"/>
+          <Argument type="String" name="idCliente"/>
+          <Argument type="String" name="valor"/>
+          <Argument type="String" name="fechaCita"/>
+          <Argument type="String" name="fechaActual"/>
+          <Argument type="String" name="descripcion"/>
+        </Method>
+        <Method name="consultaTabla" returnType="void" visibility="public">
+          <Argument type="JTable" name="tabla"/>
+          <Argument type="String" name="tipoUsuario"/>
+        </Method>
+        <Method name="consultaTablaCitas" returnType="void" visibility="public">
+          <Argument type="JTable" name="tabla"/>
+        </Method>
+        <Method name="actualizar" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="String" name="direccion"/>
+          <Argument type="String" name="correo"/>
+          <Argument type="String" name="numeroContacto"/>
+          <Argument type="String" name="user"/>
+          <Argument type="String" name="pass"/>
+          <Argument type="String" name="cedula"/>
+          <Argument type="String" name="id"/>
+        </Method>
+        <Method name="actualizarCita" returnType="void" visibility="public">
+          <Argument type="String" name="id"/>
+          <Argument type="String" name="valor"/>
+          <Argument type="String" name="fechaActual"/>
+          <Argument type="String" name="fechaCita"/>
+          <Argument type="String" name="descripcion"/>
+        </Method>
+        <Method name="eliminar" returnType="void" visibility="public">
+          <Argument type="String" name="user"/>
+        </Method>
+        <Method name="eliminarCita" returnType="void" visibility="public">
+          <Argument type="String" name="idCita"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Conexion" package="Modelo" visibility="public" xPosition="1310.0" yPosition="566.0">
+      <Fields>
+        <Field name="c" type="Connection" visibility="package" isStatic="true"/>
+        <Field name="URL" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="USERNAME" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="PASSWORD" type="String" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getConnection" returnType="Connection" visibility="public" isStatic="true"/>
+        <Method name="desconectarBd" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="desconectarSentencia" returnType="void" visibility="public" isStatic="true">
+          <Argument type="PreparedStatement" name="sentencia"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Usuario" package="Modelo" visibility="public" xPosition="33.0" yPosition="2546.0">
+      <Fields>
+        <Field name="idUsario" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="primerApellido" type="String" visibility="private"/>
+        <Field name="sedundoApellido" type="String" visibility="private"/>
+        <Field name="contrasena" type="String" visibility="private"/>
+        <Field name="correo" type="String" visibility="private"/>
+        <Field name="direccion" type="String" visibility="private"/>
+        <Field name="nickname" type="String" visibility="private"/>
+        <Field name="contacto" type="String" visibility="private"/>
+        <Field name="cedula" type="String" visibility="private"/>
+        <Field name="tipoUsuario" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="idUsario"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="primerApellido"/>
+          <Argument type="String" name="segundoApellido"/>
+          <Argument type="String" name="Contrasena"/>
+          <Argument type="String" name="correo"/>
+          <Argument type="String" name="direccion"/>
+          <Argument type="String" name="nickname"/>
+          <Argument type="String" name="contacto"/>
+          <Argument type="String" name="cedula"/>
+          <Argument type="String" name="tipoUsuario"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getIdUsario" returnType="int" visibility="public"/>
+        <Method name="setIdUsario" returnType="void" visibility="public">
+          <Argument type="int" name="idUsario"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getPrimerApellido" returnType="String" visibility="public"/>
+        <Method name="setPrimerApellido" returnType="void" visibility="public">
+          <Argument type="String" name="primerApellido"/>
+        </Method>
+        <Method name="getSedundoApellido" returnType="String" visibility="public"/>
+        <Method name="setSedundoApellido" returnType="void" visibility="public">
+          <Argument type="String" name="sedundoApellido"/>
+        </Method>
+        <Method name="getContrasena" returnType="String" visibility="public"/>
+        <Method name="setContrasena" returnType="void" visibility="public">
+          <Argument type="String" name="contrasena"/>
+        </Method>
+        <Method name="getCorreo" returnType="String" visibility="public"/>
+        <Method name="setCorreo" returnType="void" visibility="public">
+          <Argument type="String" name="correo"/>
+        </Method>
+        <Method name="getDireccion" returnType="String" visibility="public"/>
+        <Method name="setDireccion" returnType="void" visibility="public">
+          <Argument type="String" name="direccion"/>
+        </Method>
+        <Method name="getNickname" returnType="String" visibility="public"/>
+        <Method name="setNickname" returnType="void" visibility="public">
+          <Argument type="String" name="nickname"/>
+        </Method>
+        <Method name="getContacto" returnType="String" visibility="public"/>
+        <Method name="setContacto" returnType="void" visibility="public">
+          <Argument type="String" name="contacto"/>
+        </Method>
+        <Method name="getCedula" returnType="String" visibility="public"/>
+        <Method name="setCedula" returnType="void" visibility="public">
+          <Argument type="String" name="cedula"/>
+        </Method>
+        <Method name="getTipoUsuario" returnType="String" visibility="public"/>
+        <Method name="setTipoUsuario" returnType="void" visibility="public">
+          <Argument type="String" name="tipoUsuario"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Login" package="Vista" visibility="public" xPosition="560.0" yPosition="1349.0">
+      <Fields>
+        <Field name="login" type="Login1" visibility="private"/>
+        <Field name="logica" type="LogicaUsuario" visibility="package"/>
+        <Field name="advertencia" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="boton" type="rojerusan.RSMaterialButtonRectangle" visibility="private"/>
+        <Field name="contrasena" type="RSMaterialComponent.RSPasswordIconDos" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="rSPanelGradiente1" type="rojeru_san.rspanel.RSPanelGradiente" visibility="private"/>
+        <Field name="rSPanelShadow1" type="rojeru_san.rspanel.RSPanelShadow" visibility="private"/>
+        <Field name="usuario" type="RSMaterialComponent.RSTextFieldIconDos" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Login1" name="login"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="botonActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="inicioSesion" returnType="void" visibility="private">
+          <Argument type="String" name="user"/>
+          <Argument type="String" name="pass"/>
+        </Method>
+        <Method name="gestionCliente" returnType="void" visibility="public">
+          <Argument type="String" name="tipo"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Login1" package="Vista" visibility="public" xPosition="1355.0" yPosition="962.0">
+      <Fields>
+        <Field name="login" type="Login" visibility="private"/>
+        <Field name="homeAdmin" type="HomeAdmin" visibility="private"/>
+        <Field name="homeOdon" type="HomeOdon" visibility="private"/>
+        <Field name="homePaciente" type="HomePaciente" visibility="private"/>
+        <Field name="crearUsuario" type="CrearUsuario" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Login1" name="login"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getIconImage" returnType="Image" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+        <Method name="iniciar" returnType="void" visibility="private"/>
+        <Method name="irAHome" returnType="void" visibility="public">
+          <Argument type="JPanel" name="jPanel"/>
+        </Method>
+        <Method name="regresarALogin" returnType="void" visibility="public">
+          <Argument type="JPanel" name="jPanel"/>
+        </Method>
+        <Method name="irAHomeOdon" returnType="void" visibility="public">
+          <Argument type="JPanel" name="jPanel"/>
+        </Method>
+        <Method name="irAHomePaciente" returnType="void" visibility="public">
+          <Argument type="JPanel" name="jPanel"/>
+        </Method>
+        <Method name="NuevoUsuario" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="CrearUsuario" package="VistaAdmin" visibility="public" xPosition="2500.0" yPosition="377.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="nuevo" type="Login1" visibility="private"/>
+        <Field name="logica" type="LogicaUsuario" visibility="package"/>
+        <Field name="ayuda" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="bx_tipo_usuario" type="rojerusan.RSComboBox" visibility="private"/>
+        <Field name="crear" type="rojerusan.RSMaterialButtonRectangle" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="logo" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="obligatorio" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="obligatorio1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="obligatorio2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="obligatorio3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="obligatorio4" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="obligatorio5" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="obligatorio6" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="obligatorio7" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="obligatorio8" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="obligatorio9" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="rSPanelGradiente1" type="rojeru_san.rspanel.RSPanelGradiente" visibility="private"/>
+        <Field name="salir" type="rojerusan.RSMaterialButtonRectangle" visibility="private"/>
+        <Field name="txt_cedula" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txt_contrasena" type="javax.swing.JPasswordField" visibility="private"/>
+        <Field name="txt_correo" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txt_direccion" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txt_nombres" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txt_numeroContacto" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txt_primerApellido" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txt_repetirContrasena" type="javax.swing.JPasswordField" visibility="private"/>
+        <Field name="txt_segundoApellido" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txt_usuario" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Login1" name="nuevo"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="txt_usuarioActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="txt_nombresKeyTyped" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="txt_cedulaActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="txt_numeroContactoKeyTyped" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="txt_cedulaKeyTyped" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="txt_primerApellidoKeyTyped" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="txt_segundoApellidoKeyTyped" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="bx_tipo_usuarioActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="salirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="crearActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="txt_correoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="holders" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="HomeAdmin" package="VistaAdmin" visibility="public" xPosition="1920.0" yPosition="1795.0">
+      <Fields>
+        <Field name="login" type="Login1" visibility="private"/>
+        <Field name="logica" type="LogicaUsuario" visibility="package"/>
+        <Field name="filaSelected" type="int" visibility="package"/>
+        <Field name="boton_auxiliares" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="boton_home" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="boton_odontologos" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="boton_pacientes" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="boton_salir" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="deleAux" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="delePaci" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="deleteOdon" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel4" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel2" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel3" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel4" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel5" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel6" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel7" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jScrollPane3" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jScrollPane5" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jScrollPane6" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jSeparator1" type="javax.swing.JSeparator" visibility="private"/>
+        <Field name="modAux" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="modOdon" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="modPaci" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="panel" type="rojerusan.RSPanelsSlider" visibility="private"/>
+        <Field name="panelAux" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="panelHome" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="panelOdon" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="panelPaci" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="panele" type="rojeru_san.rspanel.RSPanelGradiente" visibility="private"/>
+        <Field name="persona" type="necesario.TextField" visibility="private"/>
+        <Field name="persona1" type="necesario.TextField" visibility="private"/>
+        <Field name="persona2" type="necesario.TextField" visibility="private"/>
+        <Field name="rSButtonMaterialIconUno1" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="rSButtonMaterialIconUno4" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="rSButtonMaterialIconUno7" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="rSCalendar2" type="rojeru_san.rsdate.RSCalendar" visibility="private"/>
+        <Field name="rSLabelHora1" type="rojeru_san.rsdate.RSLabelHora" visibility="private"/>
+        <Field name="rSLabelHora2" type="rojeru_san.rsdate.RSLabelHora" visibility="private"/>
+        <Field name="rSLabelHora3" type="rojeru_san.rsdate.RSLabelHora" visibility="private"/>
+        <Field name="rSLabelHora4" type="rojeru_san.rsdate.RSLabelHora" visibility="private"/>
+        <Field name="tablaAux" type="rojerusan.RSTableMetro1" visibility="private"/>
+        <Field name="tablaOdon" type="rojerusan.RSTableMetro1" visibility="private"/>
+        <Field name="tablePaci" type="rojerusan.RSTableMetro1" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Login1" name="login"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="boton_salirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="boton_homeActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="boton_odontologosActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="boton_auxiliaresActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="boton_pacientesActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="rSButtonMaterialIconUno1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="tablaOdonMouseClicked" returnType="void" visibility="private">
+          <Argument type="java.awt.event.MouseEvent" name="evt"/>
+        </Method>
+        <Method name="tablaAuxMouseClicked" returnType="void" visibility="private">
+          <Argument type="java.awt.event.MouseEvent" name="evt"/>
+        </Method>
+        <Method name="tablePaciMouseClicked" returnType="void" visibility="private">
+          <Argument type="java.awt.event.MouseEvent" name="evt"/>
+        </Method>
+        <Method name="modPaciActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="rSButtonMaterialIconUno4ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="modOdonActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="delePaciActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="deleteOdonActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="deleAuxActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="rSButtonMaterialIconUno7ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="modAuxActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="persona2ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="borrar" returnType="void" visibility="public">
+          <Argument type="String" name="id"/>
+        </Method>
+        <Method name="actualizar" returnType="void" visibility="public">
+          <Argument type="String" name="tipo"/>
+          <Argument type="RSTableMetro1" name="tabla"/>
+        </Method>
+        <Method name="modificar" returnType="void" visibility="public">
+          <Argument type="RSTableMetro1" name="tabla"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="HomeOdon" package="VistaOdon" visibility="public" xPosition="22.0" yPosition="62.0">
+      <Fields>
+        <Field name="filaSelected" type="int" visibility="package"/>
+        <Field name="idCIta" type="String" visibility="package"/>
+        <Field name="logica" type="LogicaUsuario" visibility="package"/>
+        <Field name="login" type="Login1" visibility="private"/>
+        <Field name="FechaCita" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="IdOdontologo" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="IdPaciente" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="Valor" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="agregar" type="RSMaterialComponent.RSButtonMaterialUno" visibility="private"/>
+        <Field name="boton_citas" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="boton_home" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="boton_pacientes" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="boton_perfil" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="boton_salir" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="editar" type="RSMaterialComponent.RSButtonMaterialUno" visibility="private"/>
+        <Field name="eliminar" type="RSMaterialComponent.RSButtonMaterialUno" visibility="private"/>
+        <Field name="fechaAsignacion" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel4" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel6" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel2" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel6" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel7" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jScrollPane2" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jScrollPane5" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jSeparator1" type="javax.swing.JSeparator" visibility="private"/>
+        <Field name="modPaci" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="observacion" type="javax.swing.JTextArea" visibility="private"/>
+        <Field name="paneCitas" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="panel" type="rojerusan.RSPanelsSlider" visibility="private"/>
+        <Field name="panelHome" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="panelPaci" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="panele" type="rojeru_san.rspanel.RSPanelGradiente" visibility="private"/>
+        <Field name="persona1" type="necesario.TextField" visibility="private"/>
+        <Field name="rSButtonMaterialIconUno7" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="rSCalendar2" type="rojeru_san.rsdate.RSCalendar" visibility="private"/>
+        <Field name="rSLabelHora1" type="rojeru_san.rsdate.RSLabelHora" visibility="private"/>
+        <Field name="rSLabelHora4" type="rojeru_san.rsdate.RSLabelHora" visibility="private"/>
+        <Field name="tablaCitas" type="rojerusan.RSTableMetro1" visibility="private"/>
+        <Field name="tablePaci" type="rojerusan.RSTableMetro1" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Login1" name="login"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="boton_salirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="boton_homeActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="boton_pacientesActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="boton_perfilActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="boton_citasActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="agregarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="editarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="tablePaciMouseClicked" returnType="void" visibility="private">
+          <Argument type="java.awt.event.MouseEvent" name="evt"/>
+        </Method>
+        <Method name="modPaciActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="rSButtonMaterialIconUno7ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="eliminarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="tablaCitasMouseClicked" returnType="void" visibility="private">
+          <Argument type="java.awt.event.MouseEvent" name="evt"/>
+        </Method>
+        <Method name="modificarCita" returnType="void" visibility="public">
+          <Argument type="RSTableMetro1" name="tabla"/>
+        </Method>
+        <Method name="borrarCita" returnType="void" visibility="public">
+          <Argument type="String" name="id"/>
+        </Method>
+        <Method name="actualizar" returnType="void" visibility="public">
+          <Argument type="String" name="tipo"/>
+          <Argument type="RSTableMetro1" name="tabla"/>
+        </Method>
+        <Method name="actualizarCita" returnType="void" visibility="public">
+          <Argument type="RSTableMetro1" name="tabla"/>
+        </Method>
+        <Method name="modificar" returnType="void" visibility="public">
+          <Argument type="RSTableMetro1" name="tabla"/>
+        </Method>
+        <Method name="holders" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="HomePaciente" package="VistaPaciente" visibility="public" xPosition="1210.0" yPosition="2479.0">
+      <Fields>
+        <Field name="login" type="Login1" visibility="private"/>
+        <Field name="boton_config" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="boton_home" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="boton_pacientes" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="boton_perfil" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="boton_salir" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel4" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel6" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel7" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel8" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel9" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel2" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel6" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel7" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jScrollPane4" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jSeparator1" type="javax.swing.JSeparator" visibility="private"/>
+        <Field name="paneCita" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="paneConfig" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="panePerfil" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="panel" type="rojerusan.RSPanelsSlider" visibility="private"/>
+        <Field name="panelHome" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="panele" type="rojeru_san.rspanel.RSPanelGradiente" visibility="private"/>
+        <Field name="rSButtonMaterialIconUno7" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="rSButtonMaterialIconUno8" type="RSMaterialComponent.RSButtonMaterialIconUno" visibility="private"/>
+        <Field name="rSCalendar2" type="rojeru_san.rsdate.RSCalendar" visibility="private"/>
+        <Field name="rSLabelHora1" type="rojeru_san.rsdate.RSLabelHora" visibility="private"/>
+        <Field name="rSLabelHora4" type="rojeru_san.rsdate.RSLabelHora" visibility="private"/>
+        <Field name="rSTableMetro13" type="rojerusan.RSTableMetro1" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Login1" name="login"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="boton_salirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="boton_homeActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="boton_pacientesActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="boton_perfilActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="boton_configActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="ListaUsuarios" source="Controlador.LogicaUsuario" target="Modelo.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Usuario&gt;"/>
+    <HasRelation name="login" source="VistaPaciente.HomePaciente" target="Vista.Login1" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="homeAdmin" source="Vista.Login1" target="VistaAdmin.HomeAdmin" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="login" source="Vista.Login1" target="Vista.Login" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="homeOdon" source="Vista.Login1" target="VistaOdon.HomeOdon" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Controlador.LogicaUsuario" target="Modelo.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="logica" source="VistaOdon.HomeOdon" target="Controlador.LogicaUsuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="logica" source="VistaAdmin.HomeAdmin" target="Controlador.LogicaUsuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="login" source="VistaAdmin.HomeAdmin" target="Vista.Login1" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="homePaciente" source="Vista.Login1" target="VistaPaciente.HomePaciente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuario" source="Controlador.LogicaUsuario" target="Modelo.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="nuevo" source="VistaAdmin.CrearUsuario" target="Vista.Login1" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="logica" source="Vista.Login" target="Controlador.LogicaUsuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="logica" source="VistaAdmin.CrearUsuario" target="Controlador.LogicaUsuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="login" source="Vista.Login" target="Vista.Login1" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="login" source="VistaOdon.HomeOdon" target="Vista.Login1" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="crearUsuario" source="Vista.Login1" target="VistaAdmin.CrearUsuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

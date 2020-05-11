@@ -33,7 +33,7 @@ public class LogicaUsuario {
     private Usuario usuario;
     private DefaultTableModel modelo;
     String[] titulos = {"Nombre", "Apellido(s)", "Dirección", "Correo", "Contacto", "usuario", "Password", "Cedula", "ID"};
-    String[] titulos2= {"IdCita", "IdOdontologo","IdPaciente","Valor","FechaGenerada","FechaCita","Descripcion"};
+    String[] titulos2= {"IdCita", "IdOdontologo","IdPaciente","Valor","FechaGenerado","FechaCita","Descripcion"};
     String[] fila = new String[9];
 
     public ArrayList<Usuario> obtenerListaUsuarios() {
@@ -98,14 +98,14 @@ public class LogicaUsuario {
         }
     }
     
-    public void crearCita(String idCita, String idOdontologo, String idCliente, String valor, String fechaCita, String fechaActual, String descripcion){
+    public void crearCita(String idOdontologo, String idCliente, String valor, String fechaCita, String fechaActual, String descripcion){
         
         try{
             conexion = Conexion.getConnection();
             stmt = (Statement) conexion.createStatement();
             if (conexion != null) {
-                stmt.executeUpdate("INSERT INTO citas(IdCliente,IdOdontologo,Precio,FechaGenerada,FechaCita,Descripcion) values(" + "'"  + idOdontologo + "','"
-                        + idCliente + "','" + valor + "','" + fechaActual + "','" + fechaCita + "','"+ descripcion + "')");
+                stmt.executeUpdate("INSERT INTO citas(IdOdontologo,IdCliente,Precio,FechaGenerado,FechaCita,Descripcion) values(" + "'"  + idOdontologo + "','"
+                    + idCliente + "','" + valor + "','" + fechaActual + "','" + fechaCita + "','"+ descripcion + "')");
                 System.out.println("Registro exitoso");
             } else {
                 System.out.println("conexion fallida");
@@ -170,7 +170,9 @@ public class LogicaUsuario {
             }
             ResultSet rs = null;
             try {
-                rs = stmt.executeQuery("select * from citas");
+                rs = stmt.executeQuery("select citas.Id, a.Nombre as nombreodon, b.Nombre as nombrepac, Precio,FechaGenerado,FechaCita,Descripcion from citas " +
+                    "inner join usuarios a on citas.IdOdontologo = a.Id " +
+                    "inner join usuarios b on citas.IdCliente = b.Id; ");
             } catch (SQLException ex) {
                 Logger.getLogger(LogicaUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -178,10 +180,10 @@ public class LogicaUsuario {
             while (rs.next()) {
                 
                     fila[0] = rs.getString("Id");
-                    fila[1] = rs.getString("IdCliente");
-                    fila[2] = rs.getString("IdOdontologo");
+                    fila[1] = rs.getString("nombreodon");
+                    fila[2] = rs.getString("nombrepac");
                     fila[3] = rs.getString("Precio");
-                    fila[4] = rs.getString("FechaGenerada");
+                    fila[4] = rs.getString("FechaGenerado");
                     fila[5] = rs.getString("FechaCita");
                     fila[6] = rs.getString("Descripcion");
                     
@@ -228,15 +230,14 @@ public class LogicaUsuario {
 
     }
     
-    public void actualizarCita(String idCliente , String idOdontologo, String valor, String fechaActual , String fechaCita , String descripcion) throws SQLException {
+    public void actualizarCita(String id, String valor, String fechaActual , String fechaCita , String descripcion) throws SQLException {
         try {
             conexion = Conexion.getConnection();
-            sentencias = conexion.prepareStatement("UPDATE citas SET IdCliente= "+"'"+idCliente+"', "
-                + "IdOdontologo= "+"'"+idOdontologo+"', "
-                + "Precio= "+"'"+valor+"', "
-                + "FechaGenerada= "+"'"+fechaActual+"', "
-                + "FechaCita= "+"'"+fechaCita+"', "
-                + "Descripcion= "+"'"+descripcion);
+            sentencias = conexion.prepareStatement("UPDATE citas SET Precio= "+valor+", "
+                + "FechaGenerado= '"+fechaActual+"', "
+                + "FechaCita= '"+fechaCita+"', "
+                + "Descripcion= '"+descripcion+"' "
+                + "where Id="+id);
             if (conexion != null) 
                 System.out.println("conexion exitosa");
             
