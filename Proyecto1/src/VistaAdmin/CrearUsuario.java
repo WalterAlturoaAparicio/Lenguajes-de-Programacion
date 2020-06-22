@@ -134,6 +134,11 @@ public class CrearUsuario extends javax.swing.JPanel {
 
         txt_nombres.setToolTipText("");
         txt_nombres.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txt_nombres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nombresActionPerformed(evt);
+            }
+        });
         txt_nombres.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_nombresKeyTyped(evt);
@@ -314,6 +319,10 @@ public class CrearUsuario extends javax.swing.JPanel {
     private void txt_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_correoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_correoActionPerformed
+
+    private void txt_nombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nombresActionPerformed
 
     
 
